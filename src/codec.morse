@@ -1,12 +1,10 @@
+/// This is a copy of morse based dictionary
+
 use crate::codes::Code;
 use std::fmt::Display;
 
 // . => a
 // - => h
-// .. => A
-// -- => hh
-// ... => A
-// --- => H
 
 
 pub struct Codec {
