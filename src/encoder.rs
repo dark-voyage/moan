@@ -10,6 +10,12 @@ pub struct Encoder {
     stack: HashSet<Cod>,
 }
 
+impl Default for Encoder {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Encoder {
     /// init a new encoder, that is creating a new codec, for the morse coder.
     pub fn new() -> Encoder {
@@ -33,18 +39,18 @@ impl Encoder {
         let mut message: String = String::new();
         println!("{:?}", self.stack);
         for letter_el in letters {
-            if letter_el == "" {
+            if letter_el.is_empty() {
                 continue;
             }
             for code in &self.stack {
                 if code.get_letter() == letter_el {
                     message.push_str(&code.get_sequence());
-                    message.push_str(" ");
+                    message.push(' ');
                     continue;
                 }
             }
         }
         message.pop();
-        return message;
+        message
     }
 }

@@ -6,13 +6,19 @@ pub struct Decoder {
     codec: Codec,
 }
 
+impl Default for Decoder {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Decoder {
     /// Create a new Decoder.
     /// Will create a new Codec during the creation of the Decoder.
     pub fn new() -> Decoder {
-        return Decoder {
+        Decoder {
             codec: Codec::new(),
-        };
+        }
     }
     /// For a given message, iterate over the space seperated message parts in the morse code.
     /// Search the letter that is represented by the sequenece of {.} and {-} given in as the

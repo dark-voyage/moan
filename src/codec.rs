@@ -10,7 +10,7 @@ fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
     let mut s = String::new();
         for i in 0..self.codes.len() {
             s.push_str(self.codes[i].to_string().as_ref());
-            s.push_str("\n");
+            s.push('\n');
         }
     write!(f, "{s}")
     }
@@ -18,7 +18,7 @@ fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 
 impl Codec {
     pub fn retreave_head(&self) -> Code {
-        return self.head.clone();
+        self.head.clone()
     }
     pub fn new() -> Codec {
         let head = Code::new(String::from(""), String::from(""));
@@ -191,7 +191,7 @@ impl Codec {
             .push(Code::new(String::from("="), String::from("-...-")));
         for i in 0..codec.codes.len() {
             for j in 0..codec.codes.len() {
-                if codec.codes[i].get_lenght_of_seq() < codec.codes[j].get_lenght_of_seq() {
+                if codec.codes[i].get_length_of_seq() < codec.codes[j].get_length_of_seq() {
                     let temp = codec.codes[i].clone();
                     codec.codes[i] = codec.codes[j].clone();
                     codec.codes[j] = temp;

@@ -14,15 +14,15 @@ impl Display for Cod {
 
 impl Cod {
     pub fn new(l: String, s: String) -> Cod {
-        return Cod {
+        Cod {
             letter: l,
             sequence: s,
-        };
+        }
     }
     pub fn get_letter(&self) -> String {
-        return self.letter.to_string();
+        self.letter.to_string()
     }
     pub fn get_sequence(&self) -> String {
-        return self.sequence.to_string();
+        self.sequence.to_string()
     }
 }
