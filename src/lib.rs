@@ -2,10 +2,14 @@
 mod code;
 mod codec;
 mod codes;
+
 /// decoder used to decode the morse code
 pub mod decoder;
+
 /// counterpart to the decoder, encoder is encoding the letters into morse code
 pub mod encoder;
+mod consts;
+
 #[cfg(test)]
 mod tests {
     use crate::decoder::Decoder;
