@@ -6,7 +6,7 @@ license = "MIT"
 description = "Moan encode & decode API"
 homepage = "https://github.com/katsuki-yuri/moan"
 repository = "https://github.com/katsuki-yuri/moan"
-readme = "README.md"
+readme = "readme.md"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
