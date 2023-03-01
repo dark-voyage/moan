@@ -1,5 +1,6 @@
 use crate::code::Cod;
 use std::collections::HashSet;
+use std::fmt::{Display, Formatter};
 
 #[derive(Hash, Eq, PartialEq, Debug, Clone)]
 
@@ -11,11 +12,24 @@ pub struct Code {
     right_code: Option<Box<Code>>,
 }
 
-// impl Display for Code {
-//     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-//         todo!()
-//     }
-// }
+impl Display for Code {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        let left = match &self.left_code {
+            Some(c) => c.get_letter(),
+            None => String::from("None"),
+        };
+        let right = match &self.right_code {
+            Some(c) => c.get_letter(),
+            None => String::from("None"),
+        };
+
+        write!(
+            f,
+            "Letter: {} | Sequence: {} | depth: {} | left: {} | right: {}",
+            self.letter, self.sequence, self.depth, left, right
+        )
+    }
+}
 
 impl Code {
     pub fn new(letter: String, sequence: String) -> Code {
@@ -39,20 +53,20 @@ impl Code {
         self.letter.to_string()
     }
 
-    pub fn to_string(&self) -> String {
-        let left = match &self.left_code {
-            Some(c) => c.get_letter(),
-            None => String::from("None"),
-        };
-        let right = match &self.right_code {
-            Some(c) => c.get_letter(),
-            None => String::from("None"),
-        };
-        format!(
-            "Letter: {} | Sequence: {} | depth: {} | left: {} | right: {}",
-            self.letter, self.sequence, self.depth, left, right
-        )
-    }
+    // pub fn to_string(&self) -> String {
+    //     let left = match &self.left_code {
+    //         Some(c) => c.get_letter(),
+    //         None => String::from("None"),
+    //     };
+    //     let right = match &self.right_code {
+    //         Some(c) => c.get_letter(),
+    //         None => String::from("None"),
+    //     };
+    //     format!(
+    //         "Letter: {} | Sequence: {} | depth: {} | left: {} | right: {}",
+    //         self.letter, self.sequence, self.depth, left, right
+    //     )
+    // }
 
     pub fn find_letter_for_sequence(&self, mut sequence: String) -> String {
         if sequence.is_empty() {
@@ -147,7 +161,7 @@ mod tests {
         codes.insert_node(Code::new(String::from("E"), String::from(".")));
         let stack = codes.get_children(HashSet::new());
         assert_eq!(stack.len(), 1);
-        
+
         for code in stack {
             assert_eq!(code.to_string(), "Letter:  | Sequence: ");
         }
