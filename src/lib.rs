@@ -10,12 +10,14 @@ pub mod encoder;
 mod tests {
     use crate::decoder::Decoder;
     use crate::encoder::Encoder;
+    
     #[test]
     fn decode_messages() {
         let dec_message = ".";
         let decoder = Decoder::new();
         assert_eq!(decoder.decode_message(dec_message.to_string()), "E");
     }
+    
     #[test]
     fn encode_message() {
         let letter_message = "HELLO";
@@ -24,5 +26,14 @@ mod tests {
             encoder.encode_letters(letter_message.to_string()),
             String::from(".... . .-.. .-.. ---")
         );
+    }
+    
+    #[test]
+    fn encode_and_decode() {
+        let letter_message = "HELLO";
+        let encoder = Encoder::new();
+        let decoder = Decoder::new();
+        let encoded_message = encoder.encode_letters(letter_message.to_string());
+        assert_eq!(decoder.decode_message(encoded_message), "HELLO");
     }
 }

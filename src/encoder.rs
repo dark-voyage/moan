@@ -32,6 +32,7 @@ impl Encoder {
     /// use moan::encoder;
     /// let encoder = encoder::Encoder::new();
     /// let message = encoder.encode_letters(String::from("ET"));
+    /// println!("message ==> {}", message);
     /// // message ==> ". -"
     /// ```
     pub fn encode_letters(&self, letter_sequence: String) -> String {
