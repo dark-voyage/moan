@@ -1,6 +1,6 @@
 [package]
 name = "moan"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Yuri Katsuki <yuri@katsuki.moe>"]
 license = "MIT"
 description = "Moan encode and decode API"
@@ -10,3 +10,4 @@ readme = "readme.md"
 edition = "2021"
 
 [dependencies]
+clap = { version = "4.1.8", features = ["derive"] }

@@ -36,7 +36,8 @@ impl Encoder {
     /// // message ==> ". -"
     /// ```
     pub fn encode_letters(&self, letter_sequence: String) -> String {
-        let letters: Vec<_> = letter_sequence.split("").collect();
+        let uppercase = letter_sequence.to_uppercase();
+        let letters: Vec<_> = uppercase.split("").collect();
         let mut message: String = String::new();
         for letter_el in letters {
             if letter_el.is_empty() {
