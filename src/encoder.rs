@@ -38,7 +38,6 @@ impl Encoder {
     pub fn encode_letters(&self, letter_sequence: String) -> String {
         let letters: Vec<_> = letter_sequence.split("").collect();
         let mut message: String = String::new();
-        println!("{:?}", self.stack);
         for letter_el in letters {
             if letter_el.is_empty() {
                 continue;

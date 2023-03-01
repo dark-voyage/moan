@@ -41,11 +41,11 @@ impl Code {
 
     pub fn to_string(&self) -> String {
         let left = match &self.left_code {
-            Some(c) => String::from(c.get_letter()),
+            Some(c) => c.get_letter(),
             None => String::from("None"),
         };
         let right = match &self.right_code {
-            Some(c) => String::from(c.get_letter()),
+            Some(c) => c.get_letter(),
             None => String::from("None"),
         };
         format!(
@@ -146,9 +146,10 @@ mod tests {
         let mut codes = Code::new(String::from(""), String::from(""));
         codes.insert_node(Code::new(String::from("E"), String::from(".")));
         let stack = codes.get_children(HashSet::new());
-        println!("{}", stack.len());
+        assert_eq!(stack.len(), 1);
+        
         for code in stack {
-            println!("{}", code);
+            assert_eq!(code.to_string(), "Letter:  | Sequence: ");
         }
     }
 }
