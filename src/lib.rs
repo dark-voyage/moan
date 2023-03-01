@@ -6,6 +6,7 @@ mod codes;
 pub mod decoder;
 /// counterpart to the decoder, encoder is encoding the letters into morse code
 pub mod encoder;
+
 #[cfg(test)]
 mod tests {
     use crate::decoder::Decoder;

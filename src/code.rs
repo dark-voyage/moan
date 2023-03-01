@@ -8,7 +8,12 @@ pub struct Cod {
 
 impl Display for Cod {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Letter: {} | Sequence: {}", self.get_letter(), self.get_sequence())
+        write!(
+            f,
+            "Letter: {} | Sequence: {}",
+            self.get_letter(),
+            self.get_sequence()
+        )
     }
 }
 
