@@ -1,29 +1,50 @@
-//#![deny(missing_docs)]
-mod code;
-mod codec;
-mod codes;
-/// decoder used to decode the morse code
-pub mod decoder;
-/// counterpart to the decoder, encoder is encoding the letters into morse code
-pub mod encoder;
+//! Iterators over text in morse code.
+//!
+//! ```rust
+//! fn wait_for(duration: u8) {
+//!     // ...
+//! }
+//! fn beep_for(duration: u8) {
+//!     // ...
+//! }
+//!
+//! for action in moan::encode("Hello in morse code!") {
+//!     if action.state == moan::State::On {
+//!         beep_for(action.duration);
+//!     } else {
+//!         wait_for(action.duration);
+//!     }
+//! }
+//! ```
+//!
+//! This library is for encoding text into morse code (not the other way around yet).
+//!
+//! It works without the standard library.
 
-#[cfg(test)]
-mod tests {
-    use crate::decoder::Decoder;
-    use crate::encoder::Encoder;
-    #[test]
-    fn decode_messages() {
-        let dec_message = ".";
-        let decoder = Decoder::new();
-        assert_eq!(decoder.decode_message(dec_message.to_string()), "E");
-    }
-    #[test]
-    fn encode_message() {
-        let letter_message = "HELLO";
-        let encoder = Encoder::new();
-        assert_eq!(
-            encoder.encode_letters(letter_message.to_string()),
-            String::from(".... . .-.. .-.. ---")
-        );
-    }
+#![cfg_attr(not(test), no_std)]
+#![warn(
+    missing_docs,
+    missing_debug_implementations,
+    trivial_casts,
+    trivial_numeric_casts,
+    unused_import_braces,
+    unused_qualifications
+)]
+
+extern crate alloc;
+
+pub(crate) mod chars;
+mod iters;
+
+pub use crate::iters::{Action, DelayType, Iters, State};
+
+/// Creates an iterator over the `Action`s necessary to send the message
+pub fn encode(message: &str) -> Iters<'_> {
+    Iters::new(message)
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub(crate) enum Signal {
+    Dot,
+    Dash,
 }
