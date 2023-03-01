@@ -17,7 +17,7 @@ fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 }
 
 impl Codec {
-    pub fn retreave_head(&self) -> Code {
+    pub fn retrieve_head(&self) -> Code {
         self.head.clone()
     }
     pub fn new() -> Codec {
@@ -201,6 +201,6 @@ impl Codec {
         for i in 0..codec.codes.len() {
             codec.head.insert_node(codec.codes[i].clone());
         }
-        return codec;
+        codec
     }
 }

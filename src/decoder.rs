@@ -30,10 +30,10 @@ impl Decoder {
             message.push_str(
                 &self
                     .codec
-                    .retreave_head()
+                    .retrieve_head()
                     .find_letter_for_sequence(sequence.to_string()),
             );
         }
-        return message;
+        message
     }
 }

@@ -23,8 +23,8 @@ impl Encoder {
             codec: Codec::new(),
             stack: HashSet::new(),
         };
-        encoder.stack = encoder.codec.retreave_head().get_children(encoder.stack);
-        return encoder;
+        encoder.stack = encoder.codec.retrieve_head().get_children(encoder.stack);
+        encoder
     }
     /// encode a lettered message into a sequence of morse code
     /// # Example
