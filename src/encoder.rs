@@ -32,7 +32,7 @@ impl Encoder {
     /// use moan::encoder;
     /// let encoder = encoder::Encoder::new();
     /// let message = encoder.encode_letters(String::from("ET"));
-    /// // mesage ==> ". -"
+    /// // message ==> ". -"
     /// ```
     pub fn encode_letters(&self, letter_sequence: String) -> String {
         let letters: Vec<_> = letter_sequence.split("").collect();

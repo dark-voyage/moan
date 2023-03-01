@@ -29,14 +29,14 @@ impl Code {
     }
 
     pub fn get_length_of_seq(&self) -> i32 {
-        return self.sequence.len() as i32;
+        self.sequence.len() as i32
     }
     pub fn get_sequence(&self) -> String {
-        return self.sequence.to_string();
+        self.sequence.to_string()
     }
 
     pub fn get_letter(&self) -> String {
-        return self.letter.to_string();
+        self.letter.to_string()
     }
 
     pub fn to_string(&self) -> String {
@@ -48,10 +48,10 @@ impl Code {
             Some(c) => String::from(c.get_letter()),
             None => String::from("None"),
         };
-        return format!(
+        format!(
             "Letter: {} | Sequence: {} | depth: {} | left: {} | right: {}",
             self.letter, self.sequence, self.depth, left, right
-        );
+        )
     }
 
     pub fn find_letter_for_sequence(&self, mut sequence: String) -> String {

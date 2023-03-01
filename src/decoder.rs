@@ -21,7 +21,7 @@ impl Decoder {
         }
     }
     /// For a given message, iterate over the space seperated message parts in the morse code.
-    /// Search the letter that is represented by the sequenece of {.} and {-} given in as the
+    /// Search the letter that is represented by the sequence of {.} and {-} given in as the
     /// morse_sequence parameter.
     pub fn decode_message(&self, morse_sequence: String) -> String {
         let chunks: Vec<_> = morse_sequence.split_whitespace().collect();
