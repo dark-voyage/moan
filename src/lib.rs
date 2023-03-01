@@ -13,7 +13,7 @@ mod tests {
 
     #[test]
     fn decode_messages() {
-        let dec_message = ".";
+        let dec_message = "A";
         let decoder = Decoder::new();
         assert_eq!(decoder.decode_message(dec_message.to_string()), "E");
     }
@@ -24,7 +24,7 @@ mod tests {
         let encoder = Encoder::new();
         assert_eq!(
             encoder.encode_letters(letter_message.to_string()),
-            String::from(".... . .-.. .-.. ---")
+            String::from("AAAA A AhAA AhAA hhh")
         );
     }
 

@@ -53,27 +53,12 @@ impl Code {
         self.letter.to_string()
     }
 
-    // pub fn to_string(&self) -> String {
-    //     let left = match &self.left_code {
-    //         Some(c) => c.get_letter(),
-    //         None => String::from("None"),
-    //     };
-    //     let right = match &self.right_code {
-    //         Some(c) => c.get_letter(),
-    //         None => String::from("None"),
-    //     };
-    //     format!(
-    //         "Letter: {} | Sequence: {} | depth: {} | left: {} | right: {}",
-    //         self.letter, self.sequence, self.depth, left, right
-    //     )
-    // }
-
     pub fn find_letter_for_sequence(&self, mut sequence: String) -> String {
         if sequence.is_empty() {
             return self.letter.to_string();
         }
         let character: char = sequence.remove(0);
-        if character == '.' {
+        if character == 'A' {
             return search_in_node(sequence, self.left_code.clone());
         }
         search_in_node(sequence, self.right_code.clone())
@@ -129,7 +114,7 @@ impl Code {
     pub fn insert_node(&mut self, mut code: Code) {
         let current_character = code.seq_at(code.depth);
         code.increment_depth();
-        if current_character == "." {
+        if current_character == "A" {
             self.insert_on_left(code);
         } else {
             self.insert_on_right(code);
@@ -158,7 +143,7 @@ mod tests {
     #[test]
     fn test_flattening() {
         let mut codes = Code::new(String::from(""), String::from(""));
-        codes.insert_node(Code::new(String::from("E"), String::from(".")));
+        codes.insert_node(Code::new(String::from("E"), String::from("A")));
         let stack = codes.get_children(HashSet::new());
         assert_eq!(stack.len(), 1);
 
