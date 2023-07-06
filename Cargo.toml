@@ -1,11 +1,11 @@
 [package]
 name = "moan"
-version = "0.2.0"
-authors = ["Yuri Katsuki <yuri@katsuki.moe>"]
+version = "0.2.1"
+authors = ["Sokhibjon Orzikulov <sakhib@orzklv.uz>"]
 license = "MIT"
 description = "Moan encode and decode API"
-homepage = "https://github.com/katsuki-yuri/moan"
-repository = "https://github.com/katsuki-yuri/moan"
+homepage = "https://github.com/orzklv/moan"
+repository = "https://github.com/orzklv/moan"
 readme = "readme.md"
 edition = "2021"
 
